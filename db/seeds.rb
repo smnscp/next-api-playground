@@ -1,7 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+if Doodad.exists?
+  p "Not seeding non-empty doodad table!"
+  return
+end
+
+Doodad.create!(
+  [
+    {
+      name: "Foo",
+      color: "firebrick",
+    },
+    {
+      name: "Bar",
+      color: "deepskyblue",
+    },
+    {
+      name: "Baz",
+      color: "Lemonchiffon",
+    },
+    {
+      name: "Qux",
+      color: "goldenrod",
+    },
+  ]
+)
+
+p "Created #{Doodad.count} doodads. Have fun!"
