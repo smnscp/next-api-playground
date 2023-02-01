@@ -1,0 +1,29 @@
+# [START cloudrun_rails_cloudbuild]
+steps:
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
+    entrypoint: "bash"
+    args: ["-c", "docker build -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} . "]
+
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
+
+  - id: "apply migrations"
+    name: "gcr.io/google-appengine/exec-wrapper"
+    entrypoint: "bash"
+    args:
+      [
+        "-c",
+        "/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -- bundle exec rails db:migrate",
+      ]
+
+substitutions:
+  _REGION: europe-west3-a
+  _SERVICE_NAME: next_test_service
+  _INSTANCE_NAME: next_test_instance
+  _SECRET_NAME: rails-master-key
+
+images:
+  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
+# [END cloudrun_rails_cloudbuild]

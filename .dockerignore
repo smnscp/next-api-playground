@@ -1,0 +1,8 @@
+Dockerfile
+README.md
+.ruby-version
+.bundle/
+.tool-versions
+.vscode
+.history
+vendor/
