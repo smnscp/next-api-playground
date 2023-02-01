@@ -35,3 +35,9 @@
 # Editor
 .vscode
 .history
+
+# FE
+.turbo
+.next
+dist
+node_modules
