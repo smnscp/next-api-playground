@@ -1,7 +1,7 @@
 # [START cloudrun_rails_cloudbuild]
 steps:
   - id: "build image"
-    name: "${_GCR_HOSTNAME}/cloud-builders/docker"
+    name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
     args:
       [
@@ -10,7 +10,7 @@ steps:
       ]
 
   - id: "push image"
-    name: "${_GCR_HOSTNAME}/cloud-builders/docker"
+    name: "gcr.io/cloud-builders/docker"
     args: ["push", "${_GCR_HOSTNAME}/${PROJECT_ID}/${_SERVICE_NAME}"]
 
   - id: "apply migrations"
