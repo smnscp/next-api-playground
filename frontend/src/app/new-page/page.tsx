@@ -4,7 +4,7 @@ import styles from "../page.module.css";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
-
+// const hello = fetch()
 export default function NewPage() {
   return (
     <main className={styles.main}>
