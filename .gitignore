@@ -41,3 +41,5 @@
 .next
 dist
 node_modules
+.vercel
+*.local

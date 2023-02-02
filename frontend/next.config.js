@@ -7,11 +7,11 @@ const nextConfig = {
     fallback: [
       {
         source: "/packs/:path*",
-        destination: `${process.env.HOST_API}/packs/:path*`,
+        destination: `https://${process.env.HOST_API}/packs/:path*`,
       },
       {
         source: "/:path*",
-        destination: `${process.env.HOST_API}/:path*`,
+        destination: `https://${process.env.HOST_API}/:path*`,
       },
     ],
   }),
