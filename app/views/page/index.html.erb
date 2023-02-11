@@ -1,5 +1,15 @@
 <script type="text/javascript" charset="utf-8">
-    fetch("./doodads").then((res) => res.json()).then((doodads) => alert(JSON.stringify(doodads)))
+const formData = new FormData();
+formData.append("doodad[name]", "FooFighters");
+fetch("./doodads/1", {
+  method: "PATCH",
+  body: formData,
+})
+  .then(_ => fetch("./doodads"))
+  .then(res => res.json())
+  .then(doodads => alert(JSON.stringify(doodads)));
+
+
 </script>
 <h1>This is the true test</h1>
 <img src="/cat.jpg"/>
